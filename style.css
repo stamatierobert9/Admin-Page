@@ -1,0 +1,230 @@
+/* RESET / BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 
+  LAYOUT:
+  Body => 2 columns:
+    - 240px for .sidebar
+    - 1fr for .right-side
+  Full height (100vh).
+*/
+body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 100vh;
+  margin: 0;
+}
+
+/* SIDEBAR (Left Column) */
+.sidebar {
+  background-color: #2196F3;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar Header & Logo */
+.sidebar-header {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+.main-nav {
+  flex: 1; /* fill vertical space */
+  padding: 1rem;
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.main-nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* RIGHT SIDE: Contains Header (top) + Main Content (below) */
+.right-side {
+  display: grid;
+  /* 2 rows: 
+     1) header across top
+     2) main content fills rest
+  */
+  grid-template-rows: auto 1fr;
+  overflow: hidden; /* so we can manage scrolling in main if needed */
+}
+
+/* HEADER (Top row of right-side) */
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+
+  /* Single row of items: greeting, buttons, user info, search */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* user-greeting on the left */
+.user-greeting {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.avatar-large img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.greeting-text span {
+  font-size: 0.8rem;
+  color: #666;
+}
+.greeting-text h2 {
+  font-size: 1rem;
+  margin-top: 0.2rem;
+}
+
+/* header-buttons in the middle-ish */
+.header-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.header-buttons button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  background: #2196F3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* user-info-top next */
+.user-info-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.bell-icon {
+  cursor: pointer;
+  font-size: 1rem;
+}
+.avatar-small img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.username {
+  font-size: 0.85rem;
+}
+
+/* search-bar on the far right, so we push it using margin-left: auto */
+.search-bar {
+  margin-left: auto;
+}
+.search-bar input {
+  width: 180px;
+  padding: 0.3rem;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* MAIN CONTENT (Second row of .right-side) */
+.main-content {
+  display: grid;
+  /* 2 columns: 
+     left => Projects
+     right => Announcements/Trending
+  */
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f0f2f5;
+  overflow: auto; /* scroll if content is tall */
+}
+
+/* PROJECTS SECTION (left side) */
+.projects-section {
+  background-color: #fdfdfd;
+  padding: 1rem;
+  border-radius: 4px;
+}
+.projects-section h3 {
+  margin-bottom: 1rem;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns for project cards */
+  gap: 1rem;
+}
+
+/* Project Cards */
+.project-card {
+  background-color: #fff;
+  border-left: 4px solid #FFC107;
+  border-radius: 4px 0 0 4px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+}
+.project-card h4 {
+  margin-bottom: 0.5rem;
+}
+.card-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* RIGHT PANELS (Announcements + Trending) */
+.right-panels {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+.announcements, .trending {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+}
+.announcements h4, .trending h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.announcements ul, .trending ul {
+  list-style: none;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
